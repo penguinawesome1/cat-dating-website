@@ -1,1 +1,2 @@
-A site for cats to meet their lifelong cat partners
+# cat-dating-website
+A site to meet your lifelong cat partners

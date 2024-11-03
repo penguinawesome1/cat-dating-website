@@ -1,0 +1,84 @@
+html {
+    overflow: hidden;
+}
+
+.wrapper {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    
+    /* grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; */
+}
+
+.circle {
+    transform: translateX(0);
+    border-radius: 50%;
+    width: 15rem;
+    height: 15rem;
+    animation: expand 2s ease-in-out forwards, changeColor 2s linear forwards;
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        border-radius: 50%;
+        z-index: -1;
+        filter: blur(5rem);
+        opacity: 1;
+        animation: changeColor 2s linear forwards;
+    }
+}
+
+@keyframes expand {
+    100% {
+        width: 400rem;
+        height: 400rem;
+    }
+}
+
+@keyframes changeColor {
+    0% {
+        background-color: hsl(60, 100%, 50%); /* Yellow */
+    }
+    50% {
+        background-color: hsl(30, 100%, 50%); /* Orange */
+    }
+    100% {
+        background-color: hsl(0, 100%, 50%); /* Red */
+    }
+}
+
+.new-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background-color: white;
+    border-radius: 1.5rem;
+    width: 50rem;
+    height: 40rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    opacity: 0;
+    animation: fadeIn 1.4s linear forwards 1.4s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
