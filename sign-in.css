@@ -96,17 +96,18 @@ html {
     background-color: white;
     color: black;
     border-radius: 1.5rem;
-    width: 50rem;
-    height: 40rem;
+    width: 26rem;
+    height: 38rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     opacity: 0;
     animation: fadeIn 1.4s linear forwards 1.4s;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     gap: 2rem;
     font-size: 1.5rem;
+    padding: 4rem 1rem;
 }
 
 .login-container * {
@@ -128,16 +129,11 @@ html {
     font-size: 3rem;
 }
 
-.login-container .input-box {
-    width: 30rem;
+input {
+    width: 80%;
     border-radius: .5rem;
     box-shadow: inset 2px 5px 10px rgba(0,0,0,0.2);
     padding: .4rem;
-}
-
-.login-container .input-box input {
-    background-color: transparent;
-    width: 100%;
     font-size: 2rem;
     outline: none;
 }
@@ -147,7 +143,7 @@ html {
     position: relative;
     color: white;
     padding: 1rem;
-    width: 30rem;
+    width: 60%;
     border-radius: 1rem;
     background-color: hsl(236, 32%, 26%);
     overflow: hidden;
@@ -169,10 +165,4 @@ html {
 .login-container button:hover::after {
     transition: transform 0.45s ease-in-out;
     transform: translate3d(20rem, 0, 0) rotate(35deg);
-}
-
-.login-container .horizontal {
-    display: flex;
-    justify-content: space-between;
-    width: 30rem;
 }
