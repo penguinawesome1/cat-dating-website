@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="https://static.vecteezy.com/system/resources/previews/038/108/639/non_2x/ai-generated-a-charming-watercolor-illustration-featuring-a-snug-cat-adorned-in-pajamas-peacefully-curled-up-for-a-nap-creating-a-heartwarming-and-cozy-scene-free-png.png">
     <title>Sign In - Lee's Cat Chan</title>
 
-    <link href="sign-up-and-in.css" rel="stylesheet">
+    <link href="sign-in.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="module" src="sign-in.js" defer></script>
 </head>
@@ -17,14 +17,26 @@
         <div class="circle circle2"></div>
         <div class="new-screen">
             <div class="login-container">
-                <h1 style="--order: 1">Sign In</h1>
-                <label for="username" style="--order: 1">Username</label>
-                <input type="email" placeholder="Email" id="email" style="--order: 2" required>
-                <label for="password" style="--order: 3">Password</label>
-                <input type="password" placeholder="Password" id="password" style="--order: 4" required>
-                <button id="submit" type="submit" style="--order: 5">Log In</button>
-                <a href="sign-up.html" style="--order: 6">Don't have an account?</a>
-                <div class="go" id="google" style="--order: 7"><i class="fab fa-google"></i> Google</div>
+                <div class="front">
+                    <h1 style="--order: 1">Sign In</h1>
+                    <label for="username" style="--order: 1">Username</label>
+                    <input type="email" placeholder="Email" id="email" style="--order: 2" required>
+                    <label for="password" style="--order: 3">Password</label>
+                    <input type="password" placeholder="Password" id="password" style="--order: 4" required>
+                    <button id="submit-sign-in" type="submit" style="--order: 5">Sign In</button>
+                    <button id="need-account" style="--order: 6">Need an Account</button>
+                    <div class="go" id="google" style="--order: 7"><i class="fab fa-google"></i> Google</div>
+                </div>
+                <div class="back">
+                    <h1 style="--order: 1">Sign Up</h1>
+                    <label for="username" style="--order: 1">Username</label>
+                    <input type="email" placeholder="Email" id="email" style="--order: 2" required>
+                    <label for="password" style="--order: 3">Password</label>
+                    <input type="password" placeholder="Password" id="password" style="--order: 4" required>
+                    <button id="submit-sign-up" type="submit" style="--order: 5">Create Account</button>
+                    <button id="have-account" style="--order: 6">Have an Account</button>
+                    <div class="go" id="google" style="--order: 7"><i class="fab fa-google"></i> Google</div>
+                </div>
             </div>
         </div
     </div>

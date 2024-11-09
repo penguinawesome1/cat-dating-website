@@ -1,3 +1,8 @@
+:root {
+    --bgcolor: #4d0000;
+    --bgcolor-header: #090821;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -7,7 +12,9 @@
     /* outline: 2px solid lime; */
 }
 
-html {
+body {
+    background-color: var(--bgcolor);
+    color: white;
     overflow: hidden;
 }
 
@@ -90,27 +97,51 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    perspective: 50rem;
 }
 
 .login-container {
+    width: 30rem;
+    height: 30rem;
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+    margin-bottom: 12rem;
+}
+
+.login-container.flip {
+    transform: rotateY(-180deg);
+}
+
+.front,
+.back {
     background-color: white;
     color: black;
     border-radius: 1.5rem;
-    width: 26rem;
-    height: 38rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     opacity: 0;
     animation: fadeIn 1.4s linear forwards 1.4s;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     gap: 2rem;
     font-size: 1.5rem;
-    padding: 4rem 1rem;
+    padding-block: 6rem;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden;
 }
 
-.login-container * {
+.back {
+    transform: rotateY(-180deg);
+}
+
+.front *,
+.back * {
+    --order: 0;
     opacity: 0;
     animation: fadeIn 2s linear forwards calc(var(--order)*500ms);
 }
@@ -129,8 +160,12 @@ html {
     font-size: 3rem;
 }
 
-input {
-    width: 80%;
+.login-container label {
+    margin-bottom: -2rem;
+}
+
+.login-container input {
+    width: 70%;
     border-radius: .5rem;
     box-shadow: inset 2px 5px 10px rgba(0,0,0,0.2);
     padding: .4rem;
@@ -149,20 +184,28 @@ input {
     overflow: hidden;
     cursor: pointer;
     font-size: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::after {
+        content: '';
+        z-index: -1;
+        background-color: hsla(0, 0%, 100%, 0.2);
+        position: absolute;
+        top: -50%;
+        bottom: -50%;
+        width: 1.25em;
+        transform: translate3d(-18rem, 0, 0) rotate(35deg);
+    }
+
+    &:hover::after {
+        transition: transform 0.45s ease-in-out;
+        transform: translate3d(10rem, 0, 0) rotate(35deg);
+    }
 }
 
-.login-container button::after {
-    content: '';
-    z-index: -1;
-    background-color: hsla(0, 0%, 100%, 0.2);
-    position: absolute;
-    top: -50%;
-    bottom: -50%;
-    width: 1.25em;
-    transform: translate3d(-25rem, 0, 0) rotate(35deg);
-}
-
-.login-container button:hover::after {
-    transition: transform 0.45s ease-in-out;
-    transform: translate3d(20rem, 0, 0) rotate(35deg);
+#need-account,
+#have-account {
+    background-color: orange;
 }
