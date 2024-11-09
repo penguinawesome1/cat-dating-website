@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBp2Xt-6o12a8aRZBmHJGZtbhHCbda8CAc",
@@ -13,6 +13,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+auth.languageCode = "en";
+const provider = new GoogleAuthProvider();
 
 const submitSignIn = document.getElementById("submit-sign-in");
 submitSignIn.addEventListener("click", function (event) {
@@ -43,6 +45,22 @@ submitSignUp.addEventListener("click", function (event) {
         .then((userCredential) => {
             const user = userCredential.user;
             alert("Creating Account...");
+            window.location.href = "index.html";
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorMessage);
+        });
+});
+
+const googleLogin = document.getElementById("google-sign-in");
+googleLogin.addEventListener("click", function() {
+    signInWithPopup(auth, provider)
+        .then((userCredential) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const user = result.user;
+            alert("Signing In...");
             window.location.href = "index.html";
         })
         .catch((error) => {

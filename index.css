@@ -1,0 +1,49 @@
+:root {
+    --bgcolor: #4d0000;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-family: 'Garamond', serif;
+    letter-spacing: .1rem;
+    list-style: none;
+    /* outline: 2px solid lime; */
+}
+
+body {
+    background-color: var(--bgcolor);
+}
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: scroll;
+}
+
+.doomscroll {
+    margin-block: auto;
+    display: flex;
+    gap: 1rem;
+}
+
+.doomscroll li {
+    height: 80vh;
+    width: 12rem;
+}
+
+.doomscroll li:nth-child(even) {
+    background-color: lightblue;
+}
+
+.doomscroll li:nth-child(odd) {
+    background-color: lightcoral;
+}
+
+.doomscroll li:hover {
+    transform: scaleY(110%) scaleX(120%);
+    filter: brightness(120%);
+}

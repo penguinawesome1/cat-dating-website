@@ -105,7 +105,7 @@ body {
     width: 30rem;
     height: 30rem;
     position: relative;
-    transition: transform 1500ms;
+    transition: transform 1.5s;
     transform-style: preserve-3d;
     margin-bottom: 12rem;
 }
@@ -201,8 +201,12 @@ body {
 
     &:hover::after {
         transition: transform 0.45s ease-in-out;
-        transform: translate3d(10rem, 0, 0) rotate(35deg);
+        transform: translate3d(12rem, 0, 0) rotate(35deg);
     }
+}
+
+#google-sign-in {
+    background-color: red;
 }
 
 #need-account,
