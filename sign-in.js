@@ -17,7 +17,7 @@ auth.languageCode = "en";
 const provider = new GoogleAuthProvider();
 
 const submitSignIn = document.getElementById("submit-sign-in");
-submitSignIn.addEventListener("click", function (event) {
+submitSignIn.addEventListener("click", function(event) {
     event.preventDefault(); // stops page from refreshing
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -25,10 +25,8 @@ submitSignIn.addEventListener("click", function (event) {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            alert("Signing In...");
             window.location.href = "index.html";
-        })
-        .catch((error) => {
+        }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             alert(errorMessage);
@@ -36,7 +34,7 @@ submitSignIn.addEventListener("click", function (event) {
 });
 
 const submitSignUp = document.getElementById("submit-sign-up");
-submitSignUp.addEventListener("click", function (event) {
+submitSignUp.addEventListener("click", function(event) {
     event.preventDefault(); // stops page from refreshing
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -44,10 +42,8 @@ submitSignUp.addEventListener("click", function (event) {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            alert("Creating Account...");
             window.location.href = "index.html";
-        })
-        .catch((error) => {
+        }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             alert(errorMessage);
@@ -57,13 +53,11 @@ submitSignUp.addEventListener("click", function (event) {
 const googleLogin = document.getElementById("google-sign-in");
 googleLogin.addEventListener("click", function() {
     signInWithPopup(auth, provider)
-        .then((userCredential) => {
+        .then((result) => {
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const user = result.user;
-            alert("Signing In...");
             window.location.href = "index.html";
-        })
-        .catch((error) => {
+        }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             alert(errorMessage);
