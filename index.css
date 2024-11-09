@@ -1,5 +1,6 @@
 :root {
-    --bgcolor: #4d0000;
+    /* --bgcolor: #4d0000; */
+    --bgcolor: black;
 }
 
 * {
@@ -14,36 +15,43 @@
 
 body {
     background-color: var(--bgcolor);
-}
-
-.wrapper {
+    width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    overflow-x: scroll;
+    overflow: hidden;
 }
 
-.doomscroll {
-    margin-block: auto;
+#profile-track {
     display: flex;
-    gap: 1rem;
+    gap: 4vmin;
+    position: absolute;
+    left: calc(50% - 20vmin);
+    top: 50%;
+    transform: translate(0%, -50%);
+    user-select: none;
 }
 
-.doomscroll li {
-    height: 80vh;
-    width: 12rem;
+
+#profile-track img {
+    width: 40vmin;
+    height: 56vmin;
+    object-fit: cover;
+    object-position: 100% center;
 }
 
-.doomscroll li:nth-child(even) {
-    background-color: lightblue;
+button#sign-in {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: antiquewhite;
+    color: rgb(79, 3, 79);
+    transition: .7s;
+    font-weight: 1000;
 }
 
-.doomscroll li:nth-child(odd) {
-    background-color: lightcoral;
-}
-
-.doomscroll li:hover {
-    transform: scaleY(110%) scaleX(120%);
-    filter: brightness(120%);
+button#sign-in:hover {
+    border-radius: 50%;
 }

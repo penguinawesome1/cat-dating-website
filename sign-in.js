@@ -19,8 +19,8 @@ const provider = new GoogleAuthProvider();
 const submitSignIn = document.getElementById("submit-sign-in");
 submitSignIn.addEventListener("click", function(event) {
     event.preventDefault(); // stops page from refreshing
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const email = document.getElementById("email-sign-in").value;
+    const password = document.getElementById("password-sign-in").value;
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -36,8 +36,8 @@ submitSignIn.addEventListener("click", function(event) {
 const submitSignUp = document.getElementById("submit-sign-up");
 submitSignUp.addEventListener("click", function(event) {
     event.preventDefault(); // stops page from refreshing
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const email = document.getElementById("email-sign-up").value;
+    const password = document.getElementById("password-sign-up").value;
 
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -64,24 +64,24 @@ googleLogin.addEventListener("click", function() {
         });
 });
 
-function updateUserProfile(user) {
-    const userName = user.displayName;
-    const userEmail = user.email;
-    const userProfilePicture = user.photoURL;
+// function updateUserProfile(user) {
+//     const userName = user.displayName;
+//     const userEmail = user.email;
+//     const userProfilePicture = user.photoURL;
 
-    document.getElementById("userName").textContent = userName;
-    document.getElementById("userProfilePicture").src = userProfilePicture;
-}
+//     document.getElementById("userName").textContent = userName;
+//     document.getElementById("userProfilePicture").src = userProfilePicture;
+// }
 
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        updateUserProfile(user);
-        const uid = user.uid;
-        return uid;
-    } else {
-        alert("You've been signed out");
-    }
-});
+// onAuthStateChanged(auth, (user) => {
+//     if (user) {
+//         updateUserProfile(user);
+//         const uid = user.uid;
+//         return uid;
+//     } else {
+//         alert("You've been signed out");
+//     }
+// });
 
 const card = document.querySelector(".login-container");
 const needAccountBtn = document.getElementById("need-account");

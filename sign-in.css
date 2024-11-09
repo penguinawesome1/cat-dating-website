@@ -1,6 +1,6 @@
 :root {
-    --bgcolor: #4d0000;
-    --bgcolor-header: #090821;
+    /* --bgcolor: #4d0000; */
+    --bgcolor: black;
 }
 
 * {
@@ -16,13 +16,30 @@ body {
     background-color: var(--bgcolor);
     color: white;
     overflow: hidden;
-}
-
-.wrapper {
     display: grid;
     place-items: center;
+    width: 100vw;
     height: 100vh;
     overflow: hidden;
+    animation: redToBackgroundColor 2.2s ease-in-out forwards;
+}
+
+@keyframes redToBackgroundColor {
+    0% {
+        background-color: black;
+    }
+    50% {
+        background-color: #4d0000;
+    }
+    70% {
+        background-color: #885858;
+    }
+    80% {
+        background-color: #ad9696;
+    }
+    100% {
+        background-color: var(--bgcolor);
+    }
 }
 
 .circle {

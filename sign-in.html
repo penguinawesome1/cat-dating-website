@@ -11,32 +11,30 @@
     <script type="module" src="sign-in.js" defer></script>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="circle circle1"></div>
-        <div class="circle circle2"></div>
-        <div class="new-screen">
-            <div class="login-container">
-                <div class="front">
-                    <h1 style="--order: 1">Sign In</h1>
-                    <label for="username" style="--order: 1">Username</label>
-                    <input type="email" placeholder="Email" id="email" style="--order: 2" required>
-                    <label for="password" style="--order: 3">Password</label>
-                    <input type="password" placeholder="Password" id="password" style="--order: 4" required>
-                    <button id="submit-sign-in" type="submit" style="--order: 5">Sign In</button>
-                    <button id="google-sign-in" style="--order: 6">Login with Google</button>
-                    <button id="need-account" style="--order: 7">Need an Account</button>
-                </div>
-                <div class="back">
-                    <h1 style="--order: 1">Sign Up</h1>
-                    <label for="username" style="--order: 1">Username</label>
-                    <input type="email" placeholder="Email" id="email" style="--order: 2" required>
-                    <label for="password" style="--order: 3">Password</label>
-                    <input type="password" placeholder="Password" id="password" style="--order: 4" required>
-                    <button id="submit-sign-up" type="submit" style="--order: 5">Create Account</button>
-                    <button id="have-account" style="--order: 6">Have an Account</button>
-                </div>
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="new-screen">
+        <div class="login-container">
+            <div class="front">
+                <h1 style="--order: 1">Sign In</h1>
+                <label for="username" style="--order: 1">Username</label>
+                <input type="email" placeholder="Email" id="email-sign-in" style="--order: 2" required>
+                <label for="password" style="--order: 3">Password</label>
+                <input type="password" placeholder="Password" id="password-sign-in" style="--order: 4" required>
+                <button id="submit-sign-in" type="submit" style="--order: 5">Sign In</button>
+                <button id="google-sign-in" style="--order: 6">Login with Google</button>
+                <button id="need-account" style="--order: 7">New Account</button>
             </div>
-        </div
-    </div>
+            <div class="back">
+                <h1 style="--order: 1">Sign Up</h1>
+                <label for="username" style="--order: 1">Username</label>
+                <input type="email" placeholder="Email" id="email-sign-up" style="--order: 2" required>
+                <label for="password" style="--order: 3">Password</label>
+                <input type="password" placeholder="Password" id="password-sign-up" style="--order: 4" required>
+                <button id="submit-sign-up" type="submit" style="--order: 5">Create Account</button>
+                <button id="have-account" style="--order: 6">Existing Account</button>
+            </div>
+        </div>
+    </div
 </body>
 </html>
