@@ -64,6 +64,25 @@ googleLogin.addEventListener("click", function() {
         });
 });
 
+function updateUserProfile(user) {
+    const userName = user.displayName;
+    const userEmail = user.email;
+    const userProfilePicture = user.photoURL;
+
+    document.getElementById("userName").textContent = userName;
+    document.getElementById("userProfilePicture").src = userProfilePicture;
+}
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        updateUserProfile(user);
+        const uid = user.uid;
+        return uid;
+    } else {
+        alert("You've been signed out");
+    }
+});
+
 const card = document.querySelector(".login-container");
 const needAccountBtn = document.getElementById("need-account");
 needAccountBtn.addEventListener("click", function () {
