@@ -1,6 +1,6 @@
 :root {
     /* --bgcolor: #4d0000; */
-    --bgcolor: black;
+    --bgcolor: #131114;
 }
 
 * {
@@ -13,6 +13,21 @@
     /* outline: 2px solid lime; */
 }
 
+.screen-cover {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bgcolor);
+    animation: hide 1s linear 1s forwards;
+    opacity: 100%;
+    z-index: 9999;
+}
+
+@keyframes hide {
+    100% {
+        opacity: 0%;
+    }
+}
+
 body {
     background-color: var(--bgcolor);
     width: 100vw;
@@ -20,6 +35,7 @@ body {
     display: flex;
     align-items: center;
     overflow: hidden;
+    color: white;
 }
 
 #profile-track {
@@ -28,30 +44,64 @@ body {
     position: absolute;
     left: calc(50% - 20vmin);
     top: 50%;
-    transform: translate(0%, -50%);
+    transform: translate(-25%, -50%);
     user-select: none;
+    animation: centerToLeft 2s cubic-bezier(.47, 0, .52,1) 2s forwards;
 }
 
+@keyframes centerToLeft {
+    100% {
+        transform: translate(0%, -50%);
+    }
+}
 
 #profile-track img {
-    width: 40vmin;
+    width: 6vmin;
     height: 56vmin;
     object-fit: cover;
     object-position: 100% center;
+    animation: expand 2s cubic-bezier(.47, 0, .52,1) 2s forwards;
+    transition: width height 3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-button#sign-in {
+@keyframes expand {
+    100% {
+        width: 40vmin;
+    }
+}
+
+img.fill-screen {
+    width: 100vw;
+    height: 100vh;
+}
+
+.icon {
     position: absolute;
     top: 1rem;
     left: 1rem;
     width: 2.5rem;
     height: 2.5rem;
-    background-color: antiquewhite;
-    color: rgb(79, 3, 79);
-    transition: .7s;
-    font-weight: 1000;
 }
 
-button#sign-in:hover {
+#sign-in {
+    background-color: antiquewhite;
+    color: black;
+    transition: .7s;
+    font-weight: 1000;
+    text-align: center;
+    text-decoration: none;
+}
+
+#sign-in:hover {
     border-radius: 50%;
+}
+
+#profile-picture {
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hidden {
+    display: none;
 }

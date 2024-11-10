@@ -1,3 +1,6 @@
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+const auth = getAuth();
+
 const track = document.getElementById("profile-track");
 
 const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
@@ -41,3 +44,31 @@ window.ontouchend = e => handleOnUp(e.touches[0]);
 window.onmousemove = e => handleOnMove(e);
 
 window.ontouchmove = e => handleOnMove(e.touches[0]);
+
+function updateUserProfile(user) {
+    const username = user.displayName;
+    const profilePicture = user.photoURL;
+
+    document.getElementById("username").textContent = userName;
+    document.getElementById("profile-picture").src = userProfilePicture;
+}
+
+onAuthStateChanged(auth, (user) => {
+    document.getElementById("profile-picture").classList.toggle("hidden");
+    document.getElementById("sign-in").classList.toggle("hidden");
+    if (user) {
+        updateUserProfile(user);
+        const uid = user.uid;
+    } else {
+        document.getElementById("username").textContent = "guest";
+        document.getElementById("profile-picture").src = "images/default-profile-picture";
+    }
+});
+
+// const pics = track.querySelectorAll("img");
+// pics.forEach(myPic => {
+//     myPic.addEventListener("click", () => {
+//         myPic.classList.toggle("fill-screen");
+//         myPic.style.width = "1.5rem";
+//     });
+// });
