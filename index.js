@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBp2Xt-6o12a8aRZBmHJGZtbhHCbda8CAc",
@@ -62,20 +62,21 @@ function updateUserProfile(user) {
     const username = user.displayName;
     const profilePicture = user.photoURL;
 
-    document.getElementById("username").textContent = userName;
-    document.getElementById("profile-picture").src = userProfilePicture;
+    document.getElementById("username").textContent = username;
+    document.getElementById("profile-picture").src = profilePicture;
 }
 
 onAuthStateChanged(auth, (user) => {
-        document.getElementById("sign-in").classList.toggle("hidden");
-        document.getElementById("profile-picture").classList.toggle("hidden");
-        if (user) {
-            updateUserProfile(user);
-            const uid = user.uid;
-        } else {
-            document.getElementById("username").textContent = "guest";
-        }
-    });
+    document.getElementById("sign-in").classList.toggle("hidden");
+    document.getElementById("profile-picture").classList.toggle("hidden");
+    if (user) {
+        updateUserProfile(user);
+        const uid = user.uid;
+    } else {
+        document.getElementById("username").textContent = "guest";
+        document.getElementById("profile-picture").src = "images/default-profile-picture";
+    }
+});
 
 // const pics = track.querySelectorAll("img");
 // pics.forEach(myPic => {
