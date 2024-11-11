@@ -1,5 +1,5 @@
-// import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-// const auth = getAuth();
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+const auth = getAuth();
 
 const track = document.getElementById("profile-track");
 
