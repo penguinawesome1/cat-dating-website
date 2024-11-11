@@ -66,9 +66,6 @@ function updateUserProfile(user) {
     document.getElementById("profile-picture").src = userProfilePicture;
 }
 
-document.getElementById("sign-in").classList.toggle("hidden");
-document.getElementById("profile-picture").classList.toggle("hidden");
-
 onAuthStateChanged(auth, (user) => {
         document.getElementById("sign-in").classList.toggle("hidden");
         document.getElementById("profile-picture").classList.toggle("hidden");
