@@ -14,10 +14,11 @@
 }
 
 .screen-cover {
+    position: absolute;
     width: 100vw;
     height: 100vh;
     background-color: var(--bgcolor);
-    animation: hide 1s linear 1s forwards;
+    animation: hide 1s linear .4s forwards;
     opacity: 100%;
     z-index: 9999;
 }
@@ -25,6 +26,7 @@
 @keyframes hide {
     100% {
         opacity: 0%;
+        display: none;
     }
 }
 
@@ -46,7 +48,7 @@ body {
     top: 50%;
     transform: translate(-25%, -50%);
     user-select: none;
-    animation: centerToLeft 2s cubic-bezier(.47, 0, .52,1) 2s forwards;
+    animation: centerToLeft 2s cubic-bezier(.47, 0, .52,1) 1.2s forwards;
 }
 
 @keyframes centerToLeft {
@@ -60,7 +62,7 @@ body {
     height: 56vmin;
     object-fit: cover;
     object-position: 100% center;
-    animation: expand 2s cubic-bezier(.47, 0, .52,1) 2s forwards;
+    animation: expand 2s cubic-bezier(.47, 0, .52,1) 1.2s forwards;
     transition: width height 3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
@@ -75,33 +77,56 @@ img.fill-screen {
     height: 100vh;
 }
 
-.icon {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    width: 2.5rem;
-    height: 2.5rem;
+header {
+    width: 100vw;
+    height: 100vh;
+    user-select: none;
+    z-index: 2;
 }
 
-#sign-in {
+header a {
     background-color: antiquewhite;
     color: black;
     transition: .7s;
     font-weight: 1000;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
+    border-bottom: .4rem solid tan;
+    padding: .5rem;
+    position: absolute;
 }
 
-#sign-in:hover {
+header a:hover {
     border-radius: 50%;
 }
 
-#profile-picture {
-    border-radius: 50%;
+header img {
     object-fit: cover;
     object-position: center;
 }
 
+#logo {
+    top: 1rem;
+    left: 1rem;
+}
+
+#sign-in,
+#profile-picture {
+    top: 1rem;
+    right: 1rem;
+}
+
 .hidden {
     display: none;
+}
+
+header img {
+    height: 2.5rem;
+    mix-blend-mode: darken;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
 }

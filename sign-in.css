@@ -1,6 +1,6 @@
 :root {
     /* --bgcolor: #4d0000; */
-    --bgcolor: black;
+    --bgcolor: #131114;
 }
 
 * {
@@ -26,16 +26,10 @@ body {
 
 @keyframes redToBackgroundColor {
     0% {
-        background-color: black;
-    }
-    50% {
-        background-color: #4d0000;
+        background-color: var(--bgcolor);
     }
     70% {
-        background-color: #885858;
-    }
-    80% {
-        background-color: #ad9696;
+        background-color: #870606;
     }
     100% {
         background-color: var(--bgcolor);

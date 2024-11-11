@@ -1,5 +1,5 @@
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-const auth = getAuth();
+// import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+// const auth = getAuth();
 
 const track = document.getElementById("profile-track");
 
@@ -53,17 +53,17 @@ function updateUserProfile(user) {
     document.getElementById("profile-picture").src = userProfilePicture;
 }
 
-onAuthStateChanged(auth, (user) => {
-    document.getElementById("profile-picture").classList.toggle("hidden");
-    document.getElementById("sign-in").classList.toggle("hidden");
-    if (user) {
-        updateUserProfile(user);
-        const uid = user.uid;
-    } else {
-        document.getElementById("username").textContent = "guest";
-        document.getElementById("profile-picture").src = "images/default-profile-picture";
-    }
-});
+// onAuthStateChanged(auth, (user) => {
+//     document.getElementById("sign-in").classList.toggle("hidden");
+//     document.getElementById("profile-picture").classList.toggle("hidden");  
+//     if (user) {
+//         updateUserProfile(user);
+//         const uid = user.uid;
+//     } else {
+//         document.getElementById("username").textContent = "guest";
+//         document.getElementById("profile-picture").src = "images/default-profile-picture";
+//     }
+// });
 
 // const pics = track.querySelectorAll("img");
 // pics.forEach(myPic => {
