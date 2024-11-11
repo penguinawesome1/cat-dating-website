@@ -1,5 +1,15 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBp2Xt-6o12a8aRZBmHJGZtbhHCbda8CAc",
+    authDomain: "fireside-flurt-e55e1.firebaseapp.com",
+    projectId: "fireside-flurt-e55e1",
+    storageBucket: "fireside-flurt-e55e1.firebasestorage.app",
+    messagingSenderId: "662119957266",
+    appId: "1:662119957266:web:cd4020072fd1a637d4a9cb",
+    measurementId: "G-0LP58TPFJE"
+};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -59,22 +69,20 @@ function updateUserProfile(user) {
 document.getElementById("sign-in").classList.toggle("hidden");
 document.getElementById("profile-picture").classList.toggle("hidden");
 
-// onAuthStateChanged(auth, (user) => {
-//     document.getElementById("sign-in").classList.toggle("hidden");
-//     document.getElementById("profile-picture").classList.toggle("hidden");
-//     if (user) {
-//         updateUserProfile(user);
-//         const uid = user.uid;
-//     } else {
-//         document.getElementById("username").textContent = "guest";
-//         document.getElementById("profile-picture").src = "images/default-profile-picture";
-//     }
-// });
+onAuthStateChanged(auth, (user) => {
+        document.getElementById("sign-in").classList.toggle("hidden");
+        document.getElementById("profile-picture").classList.toggle("hidden");
+        if (user) {
+            updateUserProfile(user);
+            const uid = user.uid;
+        } else {
+            document.getElementById("username").textContent = "guest";
+        }
+    });
 
 // const pics = track.querySelectorAll("img");
 // pics.forEach(myPic => {
 //     myPic.addEventListener("click", () => {
 //         myPic.classList.toggle("fill-screen");
-//         myPic.style.width = "1.5rem";
 //     });
 // });
