@@ -97,9 +97,6 @@ header a {
     border-bottom: .4rem solid tan;
     padding: .5rem;
     position: absolute;
-}
-
-header a:hover {
     border-radius: 50%;
 }
 
@@ -124,7 +121,7 @@ header img {
 }
 
 header img {
-    height: 2.5rem;
+    height: 4rem;
     mix-blend-mode: darken;
     border-radius: 50%;
     object-fit: cover;
