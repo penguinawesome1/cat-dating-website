@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOutUser } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBp2Xt-6o12a8aRZBmHJGZtbhHCbda8CAc",
@@ -35,12 +35,25 @@ document.addEventListener('click', (event) => {
                 data = e.target.result;
             };
             reader.readAsDataURL(file);
-            updateProfile(user, {
+            updateUserProfile(user, {
                 photoURL: data
             }).then(() => {
                 console.log("Profile updated successfully");
             }).catch((error) => {
                 console.error("Error updating profile:", error);
+            });
+            auth.currentUser.getIdToken(true)
+            .then(() => {
+                auth.currentUser.reload()
+                .then(() => {
+                    const updatedUser = auth.currentUser;
+                    updateUserProfile(updatedUser);
+                }).catch((error) => {
+                    console.error("Error reloading user data:", error);
+                });
+            })
+            .catch((error) => {
+                console.error("Error refreshing token:", error);
             });
             break;
         case "change-username":
@@ -52,6 +65,19 @@ document.addEventListener('click', (event) => {
                 console.log("Profile updated successfully");
             }).catch((error) => {
                 console.error("Error updating profile:", error);
+            });
+            auth.currentUser.getIdToken(true)
+            .then(() => {
+                auth.currentUser.reload()
+                .then(() => {
+                    const updatedUser = auth.currentUser;
+                    updateUserProfile(updatedUser);
+                }).catch((error) => {
+                    console.error("Error reloading user data:", error);
+                });
+            })
+            .catch((error) => {
+                console.error("Error refreshing token:", error);
             });
             break;
         case "sign-out":
