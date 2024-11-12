@@ -22,7 +22,7 @@ document.addEventListener('click', (event) => {
     }
     const target = event.target;
     switch (target.id) {
-        case "profile-picture":
+        case "change-profile-picture":
             console.log(1);
             const imageInput = document.getElementById("profile-picture-input");
             const file = imageInput.files[0];
