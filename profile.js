@@ -13,10 +13,13 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-let user = auth.currentUser;
+let user;
 
 document.addEventListener('click', (event) => {
-    if (!user) return;
+    if (!user) {
+        console.log("User is not signed in, preventing action.");
+        return;
+    }
     const target = event.target;
     switch (target.id) {
         case "profile-picture":
@@ -82,10 +85,10 @@ function updateUserProfile(user) {
     username.textContent = user.displayName;
 }
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, (currentUser) => {
     const profilePictureBox = document.getElementById("profile-picture");
-    if (user) {
-        updateUserProfile(user);
+    if (currentUser) {
+        updateUserProfile(currentUser);
         document.getElementById("profile-picture").classList.remove("hidden");
         document.getElementById("sign-in").classList.add("hidden");
     } else {
@@ -94,5 +97,5 @@ onAuthStateChanged(auth, (user) => {
         document.getElementById("sign-in").classList.remove("hidden");
         document.getElementById("username").textContent = "Guest";
     }
-    user = auth.currentUser;
+    user = currentUser;
 });
