@@ -77,11 +77,10 @@ document.addEventListener('click', (event) => {
 
 function updateUserProfile(user) {
     const profilePicture = document.getElementById("profile-picture");
-    const url = user.photoURL;
-    profilePicture.src = url;
+    profilePicture.src = user.photoURL;
     
-    const username = user.displayName;
-    username.textContent = username;
+    const username = document.getElementById("username");
+    username.textContent = user.displayName;
 }
 
 onAuthStateChanged(auth, (user) => {
