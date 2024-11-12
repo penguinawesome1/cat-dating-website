@@ -14,11 +14,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const user = auth.currentUser;
+let isUserSignedIn = false;
 
 document.addEventListener('click', (event) => {
-    if (!user) {
-        console.log("User is signed out");
+    if (!isUserSignedIn) {
+        console.log("User is signed out, cannot change settings");
         return;
     }
     const target = event.target;
@@ -78,10 +78,11 @@ onAuthStateChanged(auth, (user) => {
     document.getElementById("sign-in").classList.toggle("hidden");
     document.getElementById("profile-picture").classList.toggle("hidden");
     if (user) {
+        isUserSignedIn = true;
         updateUserProfile(user);
-        const uid = user.uid;
         console.log("User is signed in.");
     } else {
+        isUserSignedIn = false;
         document.getElementById("username").textContent = "Guest";
         document.getElementById("profile-picture").src = "images/default-profile-picture";
         console.log("User is signed out.");
