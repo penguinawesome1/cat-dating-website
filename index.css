@@ -122,6 +122,15 @@ header img {
     right: 1rem;
 }
 
+#username {
+    position: absolute;
+    top: 2.5rem;
+    right: 7.5rem;
+    background-color: transparent;
+    color: white;
+    font-size: 2rem;
+}
+
 .hidden {
     display: none;
 }
