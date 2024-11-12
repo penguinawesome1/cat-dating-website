@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBp2Xt-6o12a8aRZBmHJGZtbhHCbda8CAc",
@@ -89,10 +89,12 @@ onAuthStateChanged(auth, (user) => {
         updateUserProfile(user);
         document.getElementById("profile-picture").classList.remove("hidden");
         document.getElementById("sign-in").classList.add("hidden");
+        isUserSignedIn = true;
     } else {
         profilePicture.src = "images/default-profile-picture";
         profilePicture.classList.add("hidden");
         document.getElementById("sign-in").classList.remove("hidden");
         document.getElementById("username").textContent = "Guest";
+        isUserSignedIn = false;
     }
 });
