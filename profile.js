@@ -29,7 +29,7 @@ document.addEventListener('click', (event) => {
             
             const reader = new FileReader();
             reader.onload = (e) => {
-                updateUserProfile(user, { photoURL: e.target.result })
+                updateProfile(user, { photoURL: e.target.result })
                 .then(() => {
                     updateUserProfile(user);
                     console.log("Profile updated successfully");
@@ -42,7 +42,7 @@ document.addEventListener('click', (event) => {
         case "change-username":
             const username = prompt("What is your new username?");
             if (!username) break;
-            updateProfile(user, { displayName: "New Username" })
+            updateProfile(user, { displayName: username })
             .then(() => {
                 updateUserProfile(user);
                 console.log("Profile updated successfully");
