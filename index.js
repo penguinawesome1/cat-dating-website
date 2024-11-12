@@ -59,24 +59,25 @@ window.onmousemove = e => handleOnMove(e);
 window.ontouchmove = e => handleOnMove(e.touches[0]);
 
 function updateUserProfile(user) {
+    const profilePicture = document.getElementById("profile-picture");
+    const url = user.photoURL;
+    profilePicture.src = url;
+    
     const username = user.displayName;
-    const profilePicture = user.photoURL;
-
-    document.getElementById("username").textContent = username;
-    document.getElementById("profile-picture").src = profilePicture;
+    username.textContent = username;
 }
 
 onAuthStateChanged(auth, (user) => {
-    document.getElementById("sign-in").classList.toggle("hidden");
-    document.getElementById("profile-picture").classList.toggle("hidden");
+    const profilePictureBox = document.getElementById("profile-picture");
     if (user) {
         updateUserProfile(user);
-        const uid = user.uid;
-        console.log("User is signed in.");
+        document.getElementById("profile-picture").classList.remove("hidden");
+        document.getElementById("sign-in").classList.add("hidden");
     } else {
+        profilePicture.src = "images/default-profile-picture";
+        profilePicture.classList.add("hidden");
+        document.getElementById("sign-in").classList.remove("hidden");
         document.getElementById("username").textContent = "Guest";
-        document.getElementById("profile-picture").src = "images/default-profile-picture";
-        console.log("User is signed out.");
     }
 });
 
