@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBp2Xt-6o12a8aRZBmHJGZtbhHCbda8CAc",
@@ -27,34 +27,20 @@ document.addEventListener('click', (event) => {
             const imageInput = document.getElementById("profile-picture-input");
             const file = imageInput.files[0];
             if (!file) break;
+            
             const reader = new FileReader();
-            let data;
             reader.onload = (e) => {
                 const profilePicture = document.getElementById("change-profile-picture");
-                profilePicture.src = e.target.result;
-                data = e.target.result;
+                updateUserProfile(user, { photoURL: e.target.result })
+                .then(() => {
+                    profilePicture.src = e.target.result;
+                    console.log("Profile updated successfully");
+                })
+                .catch((error) => {
+                    console.error("Error updating profile:", error);
+                });
             };
             reader.readAsDataURL(file);
-            updateUserProfile(user, {
-                photoURL: data
-            }).then(() => {
-                console.log("Profile updated successfully");
-            }).catch((error) => {
-                console.error("Error updating profile:", error);
-            });
-            auth.currentUser.getIdToken(true)
-            .then(() => {
-                auth.currentUser.reload()
-                .then(() => {
-                    const updatedUser = auth.currentUser;
-                    updateUserProfile(updatedUser);
-                }).catch((error) => {
-                    console.error("Error reloading user data:", error);
-                });
-            })
-            .catch((error) => {
-                console.error("Error refreshing token:", error);
-            });
             break;
         case "change-username":
             const username = prompt("What is your new username?");
