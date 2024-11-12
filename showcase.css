@@ -1,12 +1,14 @@
 :root {
-    --bgcolor: #4d0000;
-    --bgcolor-header: #090821;
+    --bgcolor: #131114;
+    --bgcolor-header: red;
 }
 
 * {
-    margin: 0;
     padding: 0;
-    border: none;
+    margin: 0;
+    border: 0;
+    font-family: 'Garamond', serif;
+    letter-spacing: .1rem;
 }
 
 body {

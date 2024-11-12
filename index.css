@@ -1,5 +1,4 @@
 :root {
-    /* --bgcolor: #4d0000; */
     --bgcolor: #131114;
 }
 
@@ -10,7 +9,6 @@
     font-family: 'Garamond', serif;
     letter-spacing: .1rem;
     list-style: none;
-    /* outline: 2px solid lime; */
 }
 
 .screen-cover {
@@ -75,70 +73,4 @@ body {
 img.fill-screen {
     width: 100vw;
     height: 100vh;
-}
-
-header {
-    width: 100vw;
-    height: 100vh;
-    user-select: none;
-    z-index: 2;
-}
-
-header a {
-    background-color: antiquewhite;
-    color: black;
-    transition: .7s;
-    font-weight: 1000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    border-bottom: .4rem solid tan;
-    padding: .5rem;
-    position: absolute;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-}
-
-header a:hover {
-    filter: brightness(110%);
-}
-
-header img {
-    object-fit: cover;
-    object-position: center;
-}
-
-#logo {
-    top: 1rem;
-    left: 1rem;
-}
-
-#sign-in,
-#profile-picture {
-    top: 1rem;
-    right: 1rem;
-}
-
-#username {
-    position: absolute;
-    top: 2.5rem;
-    right: 7.5rem;
-    background-color: transparent;
-    color: white;
-    font-size: 2rem;
-}
-
-.hidden {
-    display: none;
-}
-
-header img {
-    height: 4rem;
-    mix-blend-mode: darken;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
 }

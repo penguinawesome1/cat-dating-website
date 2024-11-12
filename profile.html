@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/logo.webp">
+    <title>Profile - Lee's Cat Chan</title>
+
+    <link href="profile.css" rel="stylesheet">
+    <link href="header.css" rel="stylesheet">
+    <script src="profile.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" id="logo"><img src="images/logo.webp" alt="Company Logo" draggable="false"></a>
+            <h1 id="username">Guest</h1>
+            <a href="sign-in.html" id="sign-in">Sign<span>in</span></a>
+            <a href="profile.html" id="profile-picture" class="hidden"><img src="images/default-profile-picture.png" draggable="false"></a>
+        </nav>
+    </header>
+    <div class="wrapper">
+        <button id="change-profile-picture">
+            <input type="file" id="profile-picture-input">
+            Change profile picture
+        </button>
+        <button id="change-username">Change username</button>
+        <button id="sign-out">Sign out</button>
+    </div>
+</body>
+</html>

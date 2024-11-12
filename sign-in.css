@@ -1,5 +1,4 @@
 :root {
-    /* --bgcolor: #4d0000; */
     --bgcolor: #131114;
 }
 
@@ -9,7 +8,6 @@
     border: 0;
     font-family: 'Garamond', serif;
     letter-spacing: .1rem;
-    /* outline: 2px solid lime; */
 }
 
 body {
