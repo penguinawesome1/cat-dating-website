@@ -17,10 +17,7 @@ const auth = getAuth(app);
 let isUserSignedIn = false;
 
 document.addEventListener('click', (event) => {
-    if (!isUserSignedIn) {
-        console.log("User is signed out, cannot change settings");
-        return;
-    }
+    if (!isUserSignedIn) return;
     const target = event.target;
     switch (target.id) {
         case "profile-picture":
@@ -79,24 +76,24 @@ document.addEventListener('click', (event) => {
 });
 
 function updateUserProfile(user) {
+    const profilePicture = document.getElementById("profile-picture");
+    const url = user.photoURL;
+    profilePicture.src = url;
+    
     const username = user.displayName;
-    const profilePicture = user.photoURL;
-
-    document.getElementById("username").textContent = username;
-    document.getElementById("profile-picture").src = profilePicture;
+    username.textContent = username;
 }
 
 onAuthStateChanged(auth, (user) => {
-    document.getElementById("sign-in").classList.toggle("hidden");
-    document.getElementById("profile-picture").classList.toggle("hidden");
+    const profilePictureBox = document.getElementById("profile-picture");
     if (user) {
-        isUserSignedIn = true;
         updateUserProfile(user);
-        console.log("User is signed in.");
+        document.getElementById("profile-picture").classList.remove("hidden");
+        document.getElementById("sign-in").classList.add("hidden");
     } else {
-        isUserSignedIn = false;
+        profilePicture.src = "images/default-profile-picture";
+        profilePicture.classList.add("hidden");
+        document.getElementById("sign-in").classList.remove("hidden");
         document.getElementById("username").textContent = "Guest";
-        document.getElementById("profile-picture").src = "images/default-profile-picture";
-        console.log("User is signed out.");
     }
 });
