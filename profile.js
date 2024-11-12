@@ -23,14 +23,20 @@ document.addEventListener('click', (event) => {
     const target = event.target;
     switch (target.id) {
         case "profile-picture":
+            console.log(1);
             const imageInput = document.getElementById("profile-picture-input");
             const file = imageInput.files[0];
+            console.log(2);
             if (!file) break;
+            console.log(3);
             
             const reader = new FileReader();
+            console.log(4);
             reader.onload = (e) => {
+                console.log(5);
                 updateProfile(user, { photoURL: e.target.result })
                 .then(() => {
+                    console.log(6);
                     updateUserProfile(user);
                     console.log("Profile updated successfully");
                 }).catch((error) => {
