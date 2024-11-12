@@ -17,7 +17,10 @@ const auth = getAuth(app);
 const user = auth.currentUser;
 
 document.addEventListener('click', (event) => {
-    if (!user) return;
+    if (!user) {
+        console.log("User is signed out");
+        return;
+    }
     const target = event.target;
     switch (target.id) {
         case "profile-picture":
@@ -54,6 +57,7 @@ document.addEventListener('click', (event) => {
         case "sign-out":
             signOut(auth).then(() => {
                 console.log("Signed out successfully");
+                window.location.href = "index.html";
             }).catch((error) => {
                 console.error("Error signing out:", error);
             });
