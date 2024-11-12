@@ -13,11 +13,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
-let isUserSignedIn = false;
+let user = auth.currentUser;
 
 document.addEventListener('click', (event) => {
-    if (!isUserSignedIn) return;
+    if (!user) return;
     const target = event.target;
     switch (target.id) {
         case "profile-picture":
@@ -89,12 +88,11 @@ onAuthStateChanged(auth, (user) => {
         updateUserProfile(user);
         document.getElementById("profile-picture").classList.remove("hidden");
         document.getElementById("sign-in").classList.add("hidden");
-        isUserSignedIn = true;
     } else {
         profilePicture.src = "images/default-profile-picture";
         profilePicture.classList.add("hidden");
         document.getElementById("sign-in").classList.remove("hidden");
         document.getElementById("username").textContent = "Guest";
-        isUserSignedIn = false;
     }
+    user = auth.currentUser;
 });
