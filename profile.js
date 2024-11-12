@@ -29,13 +29,11 @@ document.addEventListener('click', (event) => {
             
             const reader = new FileReader();
             reader.onload = (e) => {
-                const profilePicture = document.getElementById("change-profile-picture");
                 updateUserProfile(user, { photoURL: e.target.result })
                 .then(() => {
-                    profilePicture.src = e.target.result;
+                    updateUserProfile(user);
                     console.log("Profile updated successfully");
-                })
-                .catch((error) => {
+                }).catch((error) => {
                     console.error("Error updating profile:", error);
                 });
             };
@@ -44,25 +42,12 @@ document.addEventListener('click', (event) => {
         case "change-username":
             const username = prompt("What is your new username?");
             if (!username) break;
-            updateProfile(user, {
-                displayName: "New Username"
-            }).then(() => {
+            updateProfile(user, { displayName: "New Username" })
+            .then(() => {
+                updateUserProfile(user);
                 console.log("Profile updated successfully");
             }).catch((error) => {
                 console.error("Error updating profile:", error);
-            });
-            auth.currentUser.getIdToken(true)
-            .then(() => {
-                auth.currentUser.reload()
-                .then(() => {
-                    const updatedUser = auth.currentUser;
-                    updateUserProfile(updatedUser);
-                }).catch((error) => {
-                    console.error("Error reloading user data:", error);
-                });
-            })
-            .catch((error) => {
-                console.error("Error refreshing token:", error);
             });
             break;
         case "sign-out":
@@ -86,15 +71,16 @@ function updateUserProfile(user) {
 }
 
 onAuthStateChanged(auth, (currentUser) => {
-    const profilePictureBox = document.getElementById("profile-picture");
+    const profilePicture = document.getElementById("profile-picture");
+    const signIn = document.getElementById("sign-in");
     if (currentUser) {
         updateUserProfile(currentUser);
-        document.getElementById("profile-picture").classList.remove("hidden");
-        document.getElementById("sign-in").classList.add("hidden");
+        profilePicture.classList.remove("hidden");
+        signIn.classList.add("hidden");
     } else {
         profilePicture.src = "images/default-profile-picture";
         profilePicture.classList.add("hidden");
-        document.getElementById("sign-in").classList.remove("hidden");
+        signIn.classList.remove("hidden");
         document.getElementById("username").textContent = "Guest";
     }
     user = currentUser;
