@@ -16,8 +16,8 @@ const auth = getAuth(app);
 
 const user = auth.currentUser;
 
-if (!user) return;
 document.addEventListener('click', (event) => {
+    if (!user) return;
     const target = event.target;
     switch (target.id) {
         case "profile-picture":
