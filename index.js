@@ -72,9 +72,11 @@ onAuthStateChanged(auth, (user) => {
     if (user) {
         updateUserProfile(user);
         const uid = user.uid;
+        console.log("User is signed in.");
     } else {
-        document.getElementById("username").textContent = "guest";
+        document.getElementById("username").textContent = "Guest";
         document.getElementById("profile-picture").src = "images/default-profile-picture";
+        console.log("User is signed out.");
     }
 });
 
