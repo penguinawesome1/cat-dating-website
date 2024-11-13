@@ -80,9 +80,10 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-// const pics = track.querySelectorAll("img");
-// pics.forEach(myPic => {
-//     myPic.addEventListener("click", () => {
-//         myPic.classList.toggle("fill-screen");
-//     });
-// });
+const track = document.getElementById("profile-track");
+const pics = track.querySelectorAll("li");
+pics.forEach(myPic => {
+    myPic.children[0].addEventListener("click", () => {
+        myPic.children[0].classList.toggle("fill-screen");
+    });
+});
