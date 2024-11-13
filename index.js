@@ -80,7 +80,6 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-const track = document.getElementById("profile-track");
 const pics = track.querySelectorAll("li");
 pics.forEach(myPic => {
     myPic.children[0].addEventListener("click", () => {
