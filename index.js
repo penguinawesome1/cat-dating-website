@@ -67,7 +67,7 @@ function updateUserProfile(user) {
 }
 
 onAuthStateChanged(auth, (user) => {
-    const profilePictureBox = document.getElementById("profile-picture");
+    const profilePicture = document.getElementById("profile-picture");
     if (user) {
         updateUserProfile(user);
         document.getElementById("profile-picture").classList.remove("hidden");
