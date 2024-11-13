@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBp2Xt-6o12a8aRZBmHJGZtbhHCbda8CAc",
@@ -13,6 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const storage = getStorage(app);
 let user;
 
 document.addEventListener('click', (event) => {
@@ -23,24 +25,23 @@ document.addEventListener('click', (event) => {
     const target = event.target;
     switch (target.id) {
         case "change-profile-picture":
-            console.log(1);
             const imageInput = document.getElementById("profile-picture-input");
             const file = imageInput.files[0];
-            console.log(2);
             if (!file) break;
-            console.log(3);
             
             const reader = new FileReader();
-            console.log(4);
             reader.onload = (e) => {
-                console.log(5);
-                updateProfile(user, { photoURL: e.target.result })
-                .then(() => {
-                    console.log(6);
-                    updateUserProfile(user);
-                    console.log("Profile updated successfully");
+                console.log(1);
+                const url = e.target.result;
+                const storageRef = ref(storage, url);
+                uploadBytes(storageRef, file)
+                .then((snapshot) => {
+                    return getDownloadURL(snapshot.ref);
+                    console.log('Uploaded a pfp!');
+                }).then((downloadURL) => {
+                    updateUserProfile(downloadURL);
                 }).catch((error) => {
-                    console.error("Error updating profile:", error);
+                    console.error('Error uploading file', error);
                 });
             };
             reader.readAsDataURL(file);
