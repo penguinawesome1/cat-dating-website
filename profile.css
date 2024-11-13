@@ -30,10 +30,15 @@ body {
     box-shadow: inset 2px 4px 20px var(--bgcolor);
     border-radius: 1.5rem;
     font-size: 1.5rem;
-    transition: 1s cubic-bezier(1, 0, 0, 1);
+    transition: .75s cubic-bezier(1, 0, 0, 1);
 }
 
 .wrapper button:hover {
     transform: scale(105%);
     box-shadow: none;
+}
+
+.wrapper button:active {
+    transform: scaleX(110%);
+    transition: .2s linear;
 }

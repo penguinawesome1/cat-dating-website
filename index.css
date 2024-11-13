@@ -18,7 +18,7 @@
     background-color: var(--bgcolor);
     animation: hide 1s linear .4s forwards;
     opacity: 100%;
-    z-index: 9999;
+    z-index: 5;
 }
 
 @keyframes hide {
